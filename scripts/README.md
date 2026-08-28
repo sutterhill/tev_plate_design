@@ -44,6 +44,9 @@ python3 07_prescore_and_prepare_enriched.py --input-run additional --output-run 
 /opt/pytorch/bin/modal run 04_fold_af2_modal.py --run-name ridgey_enriched
 python3 05_characterize.py --run-name ridgey_enriched --gpu 6 --mpnn-orders 16
 python3 06_select_final.py --count 36
+python3 09_assemble_plate.py \
+  --generated-csv "$TEV_PLATE_ROOT/selected/generated_73.csv" \
+  --analysis-commit "$(git -C "$TEV_PLATE_ROOT/repo" rev-parse HEAD)"
 ```
 
 If fewer than 36 Ridgey designs pass all strict gates, `06_select_final.py` fails loudly with the exact passing count. Generate an additional Ridgey seed shard, append/deduplicate the candidate table, and fold another diverse pre-fold shard rather than relaxing the requested stability/solubility-above-WT criteria.
@@ -56,4 +59,4 @@ If fewer than 36 Ridgey designs pass all strict gates, `06_select_final.py` fail
 - Ridgey mutant-structure prediction: batches of 30 structures/request.
 - ProteinMPNN likelihood: average 16 random decoding orders for both WT-backbone and own-AF2-backbone scores.
 
-All API requests, call IDs, raw compressed responses, A3Ms, AF2 commands/logs/tar-free raw outputs, ProteinMPNN NPZ files, and derived CSVs are retained under `raw/`, `folds/`, `scores/`, and `manifests/`.
+All API requests, call IDs, raw compressed responses, A3Ms, AF2 commands/logs, raw tarballs and extracted outputs, ProteinMPNN NPZ files, and derived CSVs are retained under `raw/`, `folds/`, `scores/`, `selected/`, and `manifests/`. The final app payload, 97-row CSV/FASTA, structure bundle, mutation PNG, validation summary, and checksums are written under `deliverables/`.

@@ -94,10 +94,24 @@ def analyze_folds(rows: list[dict], run_name: str) -> list[dict]:
 
 
 def wait_ridgey(call_id: str) -> list[dict]:
+    transient_failures = 0
     while True:
-        response = requests.get(f"{RIDGEY_API}/jobs/{call_id}", timeout=120)
+        try:
+            response = requests.get(f"{RIDGEY_API}/jobs/{call_id}", timeout=120)
+        except requests.RequestException:
+            transient_failures += 1
+            if transient_failures > 20:
+                raise
+            time.sleep(min(5 * transient_failures, 30))
+            continue
         if response.status_code == 202:
             time.sleep(5)
+            continue
+        if response.status_code in (408, 425, 429) or 500 <= response.status_code < 600:
+            transient_failures += 1
+            if transient_failures > 20:
+                response.raise_for_status()
+            time.sleep(min(5 * transient_failures, 30))
             continue
         response.raise_for_status()
         return response.json()

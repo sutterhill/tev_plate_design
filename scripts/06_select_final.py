@@ -8,7 +8,7 @@ import json
 
 import numpy as np
 
-from common import ROOT, greedy_maximin, read_csv, write_csv, write_fasta, write_json
+from common import ROOT, greedy_maximin, hamming, read_csv, write_csv, write_fasta, write_json
 
 
 def as_bool(value: object) -> bool:
@@ -21,6 +21,55 @@ def member_array(value: object) -> np.ndarray:
     if text.startswith("["):
         return np.asarray(json.loads(text), dtype=float)
     return np.asarray([float(item) for item in text.split("|")], dtype=float)
+
+
+def diverse_subset_with_seeds(rows: list[dict], count: int, seeds: list[dict]) -> list[dict]:
+    """Max-min diversity within one consensus tier, honoring prior tiers."""
+    if count >= len(rows):
+        return sorted(
+            rows,
+            key=lambda row: (-float(row["ridgey_consensus_4of5_margin"]), row["candidate_id"]),
+        )
+    remaining = sorted(rows, key=lambda row: row["candidate_id"])
+    selected: list[dict] = []
+    while remaining and len(selected) < count:
+        references = seeds + selected
+        if references:
+            candidate = max(
+                remaining,
+                key=lambda row: (
+                    min(hamming(row["sequence"], ref["sequence"]) for ref in references),
+                    float(row["ridgey_consensus_4of5_margin"]),
+                    -abs(int(row["n_mutations"]) - 60),
+                    row["candidate_id"],
+                ),
+            )
+        else:
+            candidate = max(
+                remaining,
+                key=lambda row: (
+                    float(row["ridgey_consensus_4of5_margin"]),
+                    -abs(int(row["n_mutations"]) - 60),
+                    row["candidate_id"],
+                ),
+            )
+        selected.append(candidate)
+        remaining.remove(candidate)
+    return selected
+
+
+def select_ridgey_by_vote_tier(rows: list[dict], count: int) -> list[dict]:
+    """Make joint-vote tier primary, then maximize diversity at cutoff."""
+    selected: list[dict] = []
+    for votes in range(5, -1, -1):
+        tier = [row for row in rows if int(row["ridgey_ensemble_joint_votes_vs_wt"]) == votes]
+        if not tier:
+            continue
+        need = count - len(selected)
+        selected.extend(diverse_subset_with_seeds(tier, min(need, len(tier)), selected))
+        if len(selected) == count:
+            break
+    return selected
 
 
 def main() -> None:
@@ -94,9 +143,9 @@ def main() -> None:
         raise RuntimeError(f"only {len(ridgey_pool)} Ridgey designs pass AF2 + strict stability/solubility > WT; need {args.count}. Generate/fold another shard.")
     if len(mpnn_pool) < args.count:
         raise RuntimeError(f"only {len(mpnn_pool)} ProteinMPNN designs pass AF2; need {args.count}.")
-    # Keep the strongest three-fold overcomplete consensus set, then maximize
-    # sequence diversity within it.  This prevents a barely passing outlier
-    # from displacing a consistently favorable ensemble design.
+    # Joint-vote tier is lexicographically primary.  Every higher tier is
+    # exhausted before drawing from a lower tier; diversity only chooses the
+    # cutoff-tier subset and considers the already-selected higher tiers.
     ridgey_quality_pool = sorted(
         ridgey_pool,
         key=lambda row: (
@@ -105,7 +154,7 @@ def main() -> None:
             row["candidate_id"],
         ),
     )[: min(len(ridgey_pool), args.count * 3)]
-    ridgey_selected = greedy_maximin(ridgey_quality_pool, args.count)
+    ridgey_selected = select_ridgey_by_vote_tier(ridgey_pool, args.count)
     mpnn_selected = greedy_maximin(mpnn_pool, args.count, seed_key="mpnn_generation_nll")
     selected = [parent] + ridgey_selected + mpnn_selected
     ridgey_selection_rank = {row["candidate_id"]: index + 1 for index, row in enumerate(ridgey_selected)}
@@ -124,7 +173,7 @@ def main() -> None:
         "ridgey_quality_pool": len(ridgey_quality_pool),
         "released_control_sequences_excluded": len(control_sequences),
         "strict_ridgey_filter": "AF2 pLDDT>85, CA RMSD<2A, Ridgey 600M ensemble mean stability>WT and mean solubility>WT",
-        "ridgey_consensus_ranking": "prioritize 5/5, then 4/5, then 3/5 paired members improving both; break ties by the second-worst joint relative member margin; diverse max-min selection within top 3x count",
+        "ridgey_consensus_ranking": "paired joint-vote tier is lexicographically primary (5/5, then 4/5, then 3/5, etc.); within the cutoff tier, select by max-min sequence diversity against all already-selected higher-tier designs, using consensus margin as tie-breaker",
     }
     write_json(ROOT / "selected" / "generated_73.summary.json", summary)
     print(json.dumps(summary, indent=2))
