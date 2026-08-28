@@ -301,7 +301,7 @@ def write_csv(path: Path, rows: list[dict]) -> None:
     for row in rows:
         fields.extend(key for key in row if key not in fields)
     with path.open("w", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fields)
+        writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows)
 
@@ -319,7 +319,8 @@ def mutation_matrix(path: Path, designs: list[dict], wt: str) -> None:
     axis.set_title("TEV redesign plate mutation matrix", loc="left", fontsize=17, fontweight="bold", pad=14)
     axis.set_xlabel("TEVd residue number", fontsize=12)
     axis.set_ylabel("Design", fontsize=12)
-    ticks = [0] + list(range(9, len(wt), 10)) + ([len(wt) - 1] if (len(wt) - 1) % 10 != 9 else [])
+    # Keep the terminal 220/221 labels from colliding on a 221-residue axis.
+    ticks = [0] + list(range(9, len(wt), 10))
     axis.set_xticks(ticks, [str(index + 1) for index in ticks], fontsize=8)
     axis.set_yticks(range(len(designs)), [f"{row['well']}  {row['name']}" for row in designs], fontsize=6.5)
     axis.tick_params(length=0)
@@ -432,10 +433,6 @@ def main() -> None:
         for row in apps:
             handle.write(f">{row['well']}|{row['name']}|{row['cohort']}|{row['id']}\n{row['sequence']}\n")
     mutation_matrix(output / "tev_plate_mutation_matrix.png", apps, wt)
-    files = sorted(path for path in output.rglob("*") if path.is_file() and path.name != "SHA256SUMS")
-    with (output / "SHA256SUMS").open("w") as handle:
-        for path in files:
-            handle.write(f"{sha256(path)}  {path.relative_to(output)}\n")
     summary = {
         "rows": len(apps),
         "cohorts": {cohort: sum(row["cohort"] == cohort for row in apps) for cohort in ("TEVd", "released_m3", "ridgey", "proteinmpnn")},
@@ -444,6 +441,10 @@ def main() -> None:
         "all_ridgey_means_better_than_wt": True,
     }
     (output / "VALIDATION.json").write_text(json.dumps(summary, indent=2) + "\n")
+    files = sorted(path for path in output.rglob("*") if path.is_file() and path.name != "SHA256SUMS")
+    with (output / "SHA256SUMS").open("w") as handle:
+        for path in files:
+            handle.write(f"{sha256(path)}  {path.relative_to(output)}\n")
     print(json.dumps(summary, indent=2))
 
 

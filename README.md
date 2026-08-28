@@ -15,6 +15,17 @@ Candidates are folded with AlphaFold2 model 3 and six recycles. Following the pa
 
 Ridgey candidates additionally must pass the AF2 gate and score strictly above the matched AF2-folded TEVd parent for both five-member Ridgey 600M ensemble-mean stability and ensemble-mean solubility on their own predicted structures. Paired-member consensus is used for ranking (5/5 ahead of 4/5, then 3/5, and so on) rather than as an extra hard threshold; exact member predictions and votes are retained. Final designs are chosen by deterministic sequence-diversity selection within the consensus-ranked quality pool. ProteinMPNN likelihoods are reported as geometric-mean per-residue probabilities, `exp(-mean NLL)`, averaged over 16 random decoding orders; these are not raw joint probabilities.
 
+The strict Ridgey screen yielded 118 eligible candidates. Consensus-priority selection retained all nine 5/5 designs, all 24 4/5 designs, and three diversity-selected 3/5 designs. Every final design passes the AF2 gate; every Ridgey design exceeds TEVd on both ensemble means.
+
+## Final artifacts
+
+- [`outputs/tev_plate_97.csv`](outputs/tev_plate_97.csv): fully characterized 97-row plate table
+- [`outputs/tev_plate_97.fasta`](outputs/tev_plate_97.fasta): plate-ordered sequences
+- [`outputs/tev_plate_mutation_matrix.png`](outputs/tev_plate_mutation_matrix.png): black/blue/red mutation map
+- [`outputs/plate.json`](outputs/plate.json): PlayGod application payload
+- [`outputs/structures/`](outputs/structures/): 97 AlphaFold2 PDB files
+- [`outputs/VALIDATION.json`](outputs/VALIDATION.json) and [`outputs/SHA256SUMS`](outputs/SHA256SUMS): invariant checks and file hashes
+
 All raw requests, call IDs, candidate rejections, sampled sequences, frozen A3Ms, AlphaFold2 tarballs and logs, Ridgey responses, ProteinMPNN NPZ outputs, selected tables, plots, and checksums are retained in the project archive on aws0 NVMe. See [scripts/README.md](scripts/README.md) for the pipeline commands and exact settings.
 
 The interactive result is published as the [TEV Redesign Plate](https://playgod.bio/tev-redesign-plate) experiment on PlayGod.
