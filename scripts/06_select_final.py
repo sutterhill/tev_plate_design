@@ -1,0 +1,99 @@
+#!/usr/bin/env python3
+"""Select 36 diverse Ridgey candidates and 36 diverse ProteinMPNN controls."""
+
+from __future__ import annotations
+
+import argparse
+import json
+
+import numpy as np
+
+from common import ROOT, greedy_maximin, read_csv, write_csv, write_fasta, write_json
+
+
+def as_bool(value: object) -> bool:
+    return str(value).lower() in ("1", "true", "yes")
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--count", type=int, default=36)
+    args = parser.parse_args()
+    rows = read_csv(ROOT / "scores" / "characterized_production.csv")
+    parent = next(r for r in rows if r["method"] == "parent")
+    parent_stability = float(parent["ridgey_600m_stability"])
+    parent_solubility = float(parent["ridgey_600m_solubility"])
+    wt_stability_members = np.asarray(json.loads(parent["ridgey_ensemble_stability_members"]), dtype=float)
+    wt_solubility_members = np.asarray(json.loads(parent["ridgey_ensemble_solubility_members"]), dtype=float)
+    wt_stability_mean = float(parent["ridgey_ensemble_stability_mean"])
+    wt_solubility_mean = float(parent["ridgey_ensemble_solubility_mean"])
+    for row in rows:
+        row["n_mutations"] = int(row["n_mutations"])
+        row["ridgey_600m_stability_delta_vs_wt"] = float(row["ridgey_600m_stability"]) - parent_stability
+        row["ridgey_600m_solubility_delta_vs_wt"] = float(row["ridgey_600m_solubility"]) - parent_solubility
+        stability_members = np.asarray(json.loads(row["ridgey_ensemble_stability_members"]), dtype=float)
+        solubility_members = np.asarray(json.loads(row["ridgey_ensemble_solubility_members"]), dtype=float)
+        if len(stability_members) != 5 or len(solubility_members) != 5:
+            raise ValueError(f"expected five Ridgey members for {row['candidate_id']}")
+        stability_delta = stability_members - wt_stability_members
+        solubility_delta = solubility_members - wt_solubility_members
+        stability_relative = stability_delta / max(abs(wt_stability_mean), 1e-12)
+        solubility_relative = solubility_delta / max(abs(wt_solubility_mean), 1e-12)
+        joint_relative = np.minimum(stability_relative, solubility_relative)
+        row["ridgey_ensemble_stability_mean_delta_vs_wt"] = float(row["ridgey_ensemble_stability_mean"]) - wt_stability_mean
+        row["ridgey_ensemble_solubility_mean_delta_vs_wt"] = float(row["ridgey_ensemble_solubility_mean"]) - wt_solubility_mean
+        row["ridgey_ensemble_stability_votes_vs_wt"] = int((stability_delta > 0).sum())
+        row["ridgey_ensemble_solubility_votes_vs_wt"] = int((solubility_delta > 0).sum())
+        row["ridgey_ensemble_joint_votes_vs_wt"] = int(((stability_delta > 0) & (solubility_delta > 0)).sum())
+        row["ridgey_ensemble_stability_member_deltas_vs_wt"] = json.dumps(stability_delta.tolist())
+        row["ridgey_ensemble_solubility_member_deltas_vs_wt"] = json.dumps(solubility_delta.tolist())
+        # The second-worst of five joint member margins is positive exactly
+        # when at least four members improve both endpoints.
+        row["ridgey_consensus_4of5_margin"] = float(np.sort(joint_relative)[1])
+
+    ridgey_pool = [
+        row for row in rows
+        if row["method"] == "ridgey"
+        and as_bool(row["af2_pass"])
+        and float(row["ridgey_ensemble_stability_mean"]) > wt_stability_mean
+        and float(row["ridgey_ensemble_solubility_mean"]) > wt_solubility_mean
+    ]
+    mpnn_pool = [row for row in rows if row["method"] == "proteinmpnn" and as_bool(row["af2_pass"])]
+    if len(ridgey_pool) < args.count:
+        raise RuntimeError(f"only {len(ridgey_pool)} Ridgey designs pass AF2 + strict stability/solubility > WT; need {args.count}. Generate/fold another shard.")
+    if len(mpnn_pool) < args.count:
+        raise RuntimeError(f"only {len(mpnn_pool)} ProteinMPNN designs pass AF2; need {args.count}.")
+    # Keep the strongest three-fold overcomplete consensus set, then maximize
+    # sequence diversity within it.  This prevents a barely passing outlier
+    # from displacing a consistently favorable ensemble design.
+    ridgey_quality_pool = sorted(
+        ridgey_pool,
+        key=lambda row: (
+            -int(row["ridgey_ensemble_joint_votes_vs_wt"]),
+            -float(row["ridgey_consensus_4of5_margin"]),
+            row["candidate_id"],
+        ),
+    )[: min(len(ridgey_pool), args.count * 3)]
+    ridgey_selected = greedy_maximin(ridgey_quality_pool, args.count)
+    mpnn_selected = greedy_maximin(mpnn_pool, args.count, seed_key="mpnn_generation_nll")
+    selected = [parent] + ridgey_selected + mpnn_selected
+    for row in selected:
+        row["final_selection"] = "parent" if row["method"] == "parent" else "diverse_ridgey_ensemble_consensus_ranked" if row["method"] == "ridgey" else "diverse_af2_pass_control"
+    write_csv(ROOT / "selected" / "generated_73.csv", selected)
+    write_fasta(ROOT / "selected" / "generated_73.fasta", [(r["candidate_id"], r["sequence"]) for r in selected])
+    summary = {
+        "parent": 1,
+        "ridgey_pool": len(ridgey_pool),
+        "ridgey_selected": len(ridgey_selected),
+        "proteinmpnn_pool": len(mpnn_pool),
+        "proteinmpnn_selected": len(mpnn_selected),
+        "ridgey_quality_pool": len(ridgey_quality_pool),
+        "strict_ridgey_filter": "AF2 pLDDT>85, CA RMSD<2A, Ridgey 600M ensemble mean stability>WT and mean solubility>WT",
+        "ridgey_consensus_ranking": "prioritize 5/5, then 4/5, then 3/5 paired members improving both; break ties by the second-worst joint relative member margin; diverse max-min selection within top 3x count",
+    }
+    write_json(ROOT / "selected" / "generated_73.summary.json", summary)
+    print(json.dumps(summary, indent=2))
+
+
+if __name__ == "__main__":
+    main()

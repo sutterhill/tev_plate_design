@@ -1,0 +1,39 @@
+{
+  "input_sha256": {
+    "TEVd.fasta": "b0d9794441a2e8a35356346e3a3b4aec05c004a202f72d14a2c73e9faa1aa73f",
+    "TEVd_1LVM_A_1-221.pdb": "324d1fc1f92fb17dbbb1b0801f5c0f8ce7d172e6529897ebc1cd06eda0ca8edf",
+    "fixed_positions.json": "93ad3e8eb6c6c22f28723ac3107aa6a85f2d0276005f8f4498d3d07ab371f3a9",
+    "tev_parent_current_mmseqs.a3m": "25f43fd10e236d9a5520eb128b9cca0dfcc8edcddd240c8cd628d4b87cbf7c9a"
+  },
+  "paper": {
+    "af2_model": 3,
+    "af2_msa_protocol": "replace parent TEV query row with each design sequence",
+    "af2_pass_ca_rmsd_angstrom": "<2.0",
+    "af2_pass_mean_plddt": ">85.0",
+    "af2_recycles": 6,
+    "m3_fixed_scheme": "active site plus top 50% MSA-conserved positions",
+    "proteinmpnn_backbone": "PDB 1LVM chain A, TEVd residues 1-221",
+    "proteinmpnn_checkpoint": "v_48_020 (0.2 A training-backbone noise)",
+    "proteinmpnn_omit_amino_acids": [
+      "X",
+      "C"
+    ],
+    "proteinmpnn_temperatures": [
+      0.1,
+      0.2,
+      0.3
+    ]
+  },
+  "replication": {
+    "af2_model_order": [
+      3
+    ],
+    "af2_model_type": "alphafold2",
+    "af2_runtime": "ghcr.io/sokrypton/colabfold:1.6.2-cuda12 on aws0",
+    "explicit_af2_structure_template": false,
+    "msa_substitute": "current MMseqs TEVd MSA; paper's 2020 UniRef30 HHblits MSA was not released",
+    "rationale": "Paper specifies query-swapped parent MSA but does not specify supplying 1LVM as an AF2 template. 1LVM is the design backbone and RMSD reference.",
+    "ridgey_model": "600m",
+    "ridgey_no_c_parity_filter": "reject C at every mutable m3 position"
+  }
+}

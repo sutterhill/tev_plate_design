@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# Large and generated run products live in the aws0 NVMe archive and app data.
+raw/
+folds/
+scores/
+work/
+manifests/
+candidates/
+selected/
+deliverables/structures/
