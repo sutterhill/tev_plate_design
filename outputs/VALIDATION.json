@@ -6,18 +6,14 @@
     "ridgey": 36,
     "proteinmpnn": 36
   },
-  "ridgey_solubility_vote_counts": {
+  "ridgey_joint_vote_counts": {
     "0": 0,
     "1": 0,
     "2": 0,
-    "3": 0,
-    "4": 4,
-    "5": 32
+    "3": 3,
+    "4": 24,
+    "5": 9
   },
   "all_af2_pass": true,
-  "all_ridgey_solubility_lcb_positive": true,
-  "all_ridgey_loop_robust_core_ddg_lcb_positive": true,
-  "all_ridgey_structured_destabilizing_mutations_excluded": true,
-  "ridgey_global_proteolysis_stability_above_wt_count_reported_only": 36,
-  "global_proteolysis_stability_used_for_selection": false
+  "all_ridgey_means_better_than_wt": true
 }
