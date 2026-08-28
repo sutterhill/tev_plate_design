@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run paper-matched query-swapped-A3M AF2 in up to 40 Modal containers.
+"""Run paper-matched query-swapped-A3M AF2 in up to 50 Modal containers.
 
 Invoke from aws0:
   /opt/pytorch/bin/modal run 04_fold_af2_modal.py --run-name production
@@ -41,7 +41,7 @@ def safe_name(value: str) -> str:
     gpu="A100",
     secrets=[modal.Secret.from_name("shv-internal-modal-aws")],
     timeout=30 * 60,
-    max_containers=40,
+    max_containers=50,
 )
 @modal.concurrent(max_inputs=1)
 def fold_candidate(candidate_id: str, a3m_text: str, run_name: str) -> dict:
@@ -126,7 +126,7 @@ def main(
     if limit > 0:
         rows = rows[:limit]
     calls_path = root_path / "manifests" / f"af2_modal_calls_{run_name}.json"
-    calls_manifest = json.loads(calls_path.read_text()) if calls_path.exists() else {"app": APP_NAME, "max_containers": 40, "calls": []}
+    calls_manifest = json.loads(calls_path.read_text()) if calls_path.exists() else {"app": APP_NAME, "max_containers": 50, "calls": []}
     by_candidate = {row["candidate_id"]: row for row in calls_manifest["calls"]}
 
     # Submit every missing call before blocking on results.
@@ -174,4 +174,3 @@ def main(
 
     summary = {status: sum(row.get("status") == status for row in calls_manifest["calls"]) for status in ("submitted", "completed", "failed")}
     print(json.dumps(summary, indent=2))
-

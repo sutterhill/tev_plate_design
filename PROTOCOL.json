@@ -34,7 +34,9 @@
     "msa_substitute": "current MMseqs TEVd MSA; paper's 2020 UniRef30 HHblits MSA was not released",
     "rationale": "Paper specifies query-swapped parent MSA but does not specify supplying 1LVM as an AF2 template. 1LVM is the design backbone and RMSD reference.",
     "ridgey_model": "600m plus the five-member 600m ensemble",
-    "ridgey_selection": "AF2 gate plus ensemble-mean stability and solubility both strictly above paired AF2-folded TEVd; candidates ranked by paired-member consensus before sequence-diversity selection",
-    "ridgey_no_c_parity_filter": "reject C at every mutable m3 position"
+    "ridgey_selection": "AF2 gate; every retained helix/sheet mutation has positive WT-structure DDG ensemble mean with at least 4/5 members supporting; loop/coil mutations excluded from stability credit; core-DDG mean-SD >0; fresh own-structure solubility paired-delta mean-SD >0; balanced quality then max-min diversity",
+    "ridgey_global_proteolysis_stability_selection": "reported only; excluded from gating and ranking",
+    "ridgey_secondary_structure_reference": "1LVM PDB chain-A HELIX/SHEET records: 124 structured and 97 loop/coil residues",
+    "ridgey_no_c_filter": "reject novel C; allow restoration of native TEVd cysteines by DDG reversion"
   }
 }

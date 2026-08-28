@@ -44,8 +44,16 @@ python3 07_prescore_and_prepare_enriched.py --input-run additional --output-run 
 /opt/pytorch/bin/modal run 04_fold_af2_modal.py --run-name ridgey_enriched
 python3 05_characterize.py --run-name ridgey_enriched --gpu 6 --mpnn-orders 16
 python3 06_select_final.py --count 36
+# Replace the first-pass Ridgey arm with a loop-robust mutation-level screen.
+python3 10_prepare_loop_robust_ridgey.py --count 240 --min-ddg-member-votes 4
+python3 03_prepare_af2.py --run-name loop_robust --per-method 240 \
+  --ridgey-table "$TEV_PLATE_ROOT/candidates/ridgey_loop_robust_valid_unique.csv" \
+  --proteinmpnn-table "$TEV_PLATE_ROOT/candidates/none.csv"
+/opt/pytorch/bin/modal run 04_fold_af2_modal.py --run-name loop_robust
+python3 05_characterize.py --run-name loop_robust --gpu 6 --mpnn-orders 16
+python3 11_select_loop_robust_ridgey.py --count 36
 python3 09_assemble_plate.py \
-  --generated-csv "$TEV_PLATE_ROOT/selected/generated_73.csv" \
+  --generated-csv "$TEV_PLATE_ROOT/selected/generated_73_loop_robust.csv" \
   --analysis-commit "$(git -C "$TEV_PLATE_ROOT/repo" rev-parse HEAD)"
 ```
 
@@ -55,8 +63,14 @@ If fewer than 36 Ridgey designs pass all strict gates, `06_select_final.py` fail
 
 - Ridgey inverse fold: request 512 sequences/job. The first four jobs produced 372 strict unique candidates from 2,048 raw samples; the additional sixteen jobs produced 1,265 new strict uniques from 8,192 raw samples.
 - ProteinMPNN: 128 sequences per each of 0.1/0.2/0.3 = 384 raw; local batch size 32.
-- AF2: start with 144 diverse sequences/method, then fold all remaining first-wave Ridgey sequences and an ensemble-prescore-enriched set of 1,000 additional Ridgey candidates because solubility-above-WT is rare. The aws0 GPUs are reserved by unrelated training, so a task-specific Modal app fans out up to 40 hosted A100 containers while the aws0 driver preserves calls, raw tarballs, and extracted outputs on NVMe. Each input is its own frozen query-swapped A3M.
+- AF2: start with 144 diverse sequences/method, then fold all remaining first-wave Ridgey sequences and an ensemble-prescore-enriched set of 1,000 additional Ridgey candidates because solubility-above-WT is rare. The loop-robust stage edits 947 AF2-pass Ridgey precursors, selects 240 for fresh AF2, and yields 134 candidates passing AF2, core-DDG mean-minus-SD, and solubility mean-minus-SD. A task-specific Modal app fans out up to 50 hosted A100 containers while the aws0 driver preserves calls, raw tarballs, and extracted outputs on NVMe. Each input is its own frozen query-swapped A3M.
 - Ridgey mutant-structure prediction: batches of 30 structures/request.
 - ProteinMPNN likelihood: average 16 random decoding orders for both WT-backbone and own-AF2-backbone scores.
+
+## Loop-robust Ridgey stability selection
+
+The original global stability head is trained on proteolysis measurements and can respond to loop accessibility. `10_prepare_loop_robust_ridgey.py` therefore parses chain-A HELIX/SHEET assignments from the original 1LVM PDB header, excludes all other loop/coil positions from stability credit, and uses the five-member WT-structure DDG matrix for mutation-level screening. A structured mutation is retained only when the ensemble mean improvement is positive and at least 4/5 members agree; otherwise it is reverted to WT. Native WT cysteines can be restored, but new cysteines remain forbidden. The edited sequence is then refolded before any final score is used.
+
+`11_select_loop_robust_ridgey.py` requires AF2 pass, positive core-DDG mean-minus-SD, and positive paired solubility delta mean-minus-SD versus the parent from the same fold/score run. It balances core-DDG and solubility percentiles before max-min diversity selection. Global MGnify proteolysis stability is retained only as a reported diagnostic.
 
 All API requests, call IDs, raw compressed responses, A3Ms, AF2 commands/logs, raw tarballs and extracted outputs, ProteinMPNN NPZ files, and derived CSVs are retained under `raw/`, `folds/`, `scores/`, `selected/`, and `manifests/`. The final app payload, 97-row CSV/FASTA, structure bundle, mutation PNG, validation summary, and checksums are written under `deliverables/`.
