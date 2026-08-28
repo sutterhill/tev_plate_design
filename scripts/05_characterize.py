@@ -260,7 +260,7 @@ def score_mpnn(rows: list[dict], run_name: str, gpu: str, orders: int = 16) -> t
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--run-name", choices=["smoke", "production"], default="production")
+    parser.add_argument("--run-name", default="production")
     parser.add_argument("--gpu", default="6")
     parser.add_argument("--mpnn-orders", type=int, default=16)
     args = parser.parse_args()

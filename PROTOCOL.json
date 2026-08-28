@@ -29,11 +29,12 @@
       3
     ],
     "af2_model_type": "alphafold2",
-    "af2_runtime": "ghcr.io/sokrypton/colabfold:1.6.2-cuda12 on aws0",
+    "af2_runtime": "task-specific Modal A100 fan-out using ghcr.io/sokrypton/colabfold:1.6.2-cuda12; aws0 is the persistent driver/archive",
     "explicit_af2_structure_template": false,
     "msa_substitute": "current MMseqs TEVd MSA; paper's 2020 UniRef30 HHblits MSA was not released",
     "rationale": "Paper specifies query-swapped parent MSA but does not specify supplying 1LVM as an AF2 template. 1LVM is the design backbone and RMSD reference.",
-    "ridgey_model": "600m",
+    "ridgey_model": "600m plus the five-member 600m ensemble",
+    "ridgey_selection": "AF2 gate plus ensemble-mean stability and solubility both strictly above paired AF2-folded TEVd; candidates ranked by paired-member consensus before sequence-diversity selection",
     "ridgey_no_c_parity_filter": "reject C at every mutable m3 position"
   }
 }

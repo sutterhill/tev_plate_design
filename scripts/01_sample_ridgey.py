@@ -34,6 +34,7 @@ def main() -> None:
     parser.add_argument("--seeds", default="0,1")
     parser.add_argument("--num-per-job", type=int, default=512)
     parser.add_argument("--steps", type=int, default=100)
+    parser.add_argument("--run-name", default="production")
     parser.add_argument("--smoke", action="store_true")
     args = parser.parse_args()
 
@@ -44,7 +45,7 @@ def main() -> None:
 
     pdb = (ROOT / "inputs" / "TEVd_1LVM_A_1-221.pdb").read_text()
     aligned = (ROOT / "inputs" / "m3_aligned_sequence.txt").read_text().strip()
-    run_name = "smoke" if args.smoke else "production"
+    run_name = "smoke" if args.smoke else args.run_name
     raw_dir = ROOT / "raw" / "ridgey_inverse_fold" / run_name
     raw_dir.mkdir(parents=True, exist_ok=True)
     manifest_path = ROOT / "manifests" / f"ridgey_inverse_fold_{run_name}.json"
