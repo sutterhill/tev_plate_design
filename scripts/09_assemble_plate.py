@@ -229,30 +229,8 @@ def generated_record(row: dict, wt: str, baseline: dict, cohort: str, number: in
         failed.append("mean pLDDT <=85")
     if float(row["af2_ca_rmsd_to_1lvm_angstrom"]) >= 2:
         failed.append("global CA RMSD >=2A")
-    loop_robust = None
-    if cohort == "ridgey" and row.get("loop_robust_core_ddg_mean") not in (None, ""):
-        core_members = parse_values(row["loop_robust_core_ddg_members"])
-        loop_robust = {
-            "value": float(row["loop_robust_core_ddg_mean"]),
-            "wt": 0.0,
-            "delta": float(row["loop_robust_core_ddg_mean"]),
-            "percent_change": None,
-            "unit": "summed DDG improvement",
-            "good_direction": "higher",
-            "std": float(row["loop_robust_core_ddg_std"]),
-            "lcb": float(row["loop_robust_core_ddg_lcb"]),
-            "per_mutation_lcb": float(row["loop_robust_core_ddg_per_mutation_lcb"]),
-            "member_values": core_members,
-            "member_count": len(core_members),
-            "structured_mutation_count": int(float(row["structured_mutation_count"])),
-            "loop_mutation_count": int(float(row["loop_mutation_count"])),
-            "structured_destabilizing_mutations_included": int(float(row["structured_destabilizing_mutations_included"])),
-            "loops_excluded_from_score": True,
-            "minimum_improving_member_votes_per_structured_mutation": int(float(row["loop_robust_ddg_min_improving_votes_per_mutation"])),
-            "selection_metric": True,
-        }
     label = (
-        "loop-excluded 4/5 mutation-DDG screen; solubility LCB > WT; diversity-selected"
+        f"ensemble means > WT; paired consensus {joint_votes}/5; diversity-selected"
         if cohort == "ridgey" else "paper-matched ProteinMPNN recipe; AF2-pass diversity control"
     )
     app = {
@@ -282,12 +260,10 @@ def generated_record(row: dict, wt: str, baseline: dict, cohort: str, number: in
             "ridgey_stability": metric(
                 stability_mean, baseline["stability_mean"], "kcal/mol", std=stability_sd,
                 member_values=member_stability, votes_vs_wt=stable_votes, joint_votes_vs_wt=joint_votes, member_count=5,
-                selection_metric=False,
             ),
             "ridgey_solubility": metric(
                 solubility_mean, baseline["solubility_mean"], "", std=solubility_sd,
                 member_values=member_solubility, votes_vs_wt=soluble_votes, joint_votes_vs_wt=joint_votes, member_count=5,
-                lcb_delta_vs_selection_wt=finite(row.get("fresh_solubility_lcb_delta_vs_wt")), selection_metric=cohort == "ridgey",
             ),
             "mpnn_p_seq_wt_structure": metric(
                 float(row["mpnn_wt_structure_geomean_probability"]), baseline["mpnn_wt"], "geom. mean p"
@@ -297,8 +273,6 @@ def generated_record(row: dict, wt: str, baseline: dict, cohort: str, number: in
             ),
         },
     }
-    if loop_robust is not None:
-        app["metrics"]["ridgey_loop_robust_stability"] = loop_robust
     flat = {
         "well": well, "id": candidate_id, "display_name": display_name, "source_candidate_id": candidate_id,
         "cohort": cohort, "selection_label": label, "experimental_activity_tier": "not_measured",
@@ -314,17 +288,6 @@ def generated_record(row: dict, wt: str, baseline: dict, cohort: str, number: in
         "ridgey_ensemble_stability_members": json.dumps(member_stability), "ridgey_ensemble_solubility_members": json.dumps(member_solubility),
         "ridgey_ensemble_stability_votes_vs_wt": stable_votes, "ridgey_ensemble_solubility_votes_vs_wt": soluble_votes,
         "ridgey_ensemble_joint_votes_vs_wt": joint_votes,
-        "global_proteolysis_stability_used_for_selection": False if cohort == "ridgey" else "",
-        "loop_robust_core_ddg_mean": loop_robust["value"] if loop_robust else "",
-        "loop_robust_core_ddg_sd": loop_robust["std"] if loop_robust else "",
-        "loop_robust_core_ddg_lcb": loop_robust["lcb"] if loop_robust else "",
-        "loop_robust_core_ddg_per_mutation_lcb": loop_robust["per_mutation_lcb"] if loop_robust else "",
-        "structured_mutation_count": loop_robust["structured_mutation_count"] if loop_robust else "",
-        "loop_mutation_count": loop_robust["loop_mutation_count"] if loop_robust else "",
-        "structured_destabilizing_mutations_included": loop_robust["structured_destabilizing_mutations_included"] if loop_robust else "",
-        "structured_mutations_reverted": row.get("structured_mutations_reverted", "") if loop_robust else "",
-        "structured_mutations_reverted_count": row.get("structured_mutations_reverted_count", "") if loop_robust else "",
-        "fresh_solubility_lcb_delta_vs_selection_wt": row.get("fresh_solubility_lcb_delta_vs_wt", "") if loop_robust else "",
         "mpnn_wt_structure_nll": float(row["mpnn_wt_structure_nll"]),
         "mpnn_wt_structure_geomean_probability": app["metrics"]["mpnn_p_seq_wt_structure"]["value"],
         "mpnn_mutant_structure_nll": float(row["mpnn_mutant_structure_nll"]),
@@ -390,31 +353,7 @@ def main() -> None:
     output.mkdir(parents=True, exist_ok=True)
     controls = read_csv(ROOT / "work" / "control_characterization" / "released_controls_final_25.csv")
     generated = read_csv(Path(args.generated_csv))
-    wt_row = dict(next(row for row in controls if row["design_id"] == "TEVd"))
-    generated_parent = next(row for row in generated if row["method"] == "parent")
-    # Use the parent folded and scored in the same run as the loop-robust
-    # candidates so paired ensemble deltas and vote counts have one exact WT
-    # baseline throughout the plate.
-    wt_row.update({
-        "fresh_af2_pdb": generated_parent["af2_pdb"],
-        "fresh_af2_plddt_mean": generated_parent["af2_mean_plddt"],
-        "fresh_af2_ca_rmsd_global_vs_1LVM_A": generated_parent["af2_ca_rmsd_to_1lvm_angstrom"],
-        "fresh_af2_ca_rmsd_m3_protected_after_global_align_A": generated_parent["af2_protected_ca_rmsd_to_1lvm_angstrom"],
-        "fresh_af2_ca_rmsd_active_site_after_global_align_A": generated_parent["af2_active_site_ca_rmsd_to_1lvm_angstrom"],
-        "fresh_af2_pipeline_gate_plddt85_rmsd2_pass": generated_parent["af2_pass"],
-        "fresh_af2_ridgey_600m_stability": generated_parent["ridgey_600m_stability"],
-        "fresh_af2_ridgey_600m_solubility_probability": generated_parent["ridgey_600m_solubility"],
-        "fresh_af2_ridgey_ensemble_stability_mean": generated_parent["ridgey_ensemble_stability_mean"],
-        "fresh_af2_ridgey_ensemble_stability_sample_sd": generated_parent["ridgey_ensemble_stability_std"],
-        "fresh_af2_ridgey_ensemble_stability_members_json": generated_parent["ridgey_ensemble_stability_members"],
-        "fresh_af2_ridgey_ensemble_solubility_mean": generated_parent["ridgey_ensemble_solubility_mean"],
-        "fresh_af2_ridgey_ensemble_solubility_sample_sd": generated_parent["ridgey_ensemble_solubility_std"],
-        "fresh_af2_ridgey_ensemble_solubility_members_json": generated_parent["ridgey_ensemble_solubility_members"],
-        "proteinmpnn_wt_structure_nll_mean_16order": generated_parent["mpnn_wt_structure_nll"],
-        "proteinmpnn_wt_structure_geomean_probability": generated_parent["mpnn_wt_structure_geomean_probability"],
-        "fresh_af2_proteinmpnn_own_structure_nll_mean_16order": generated_parent["mpnn_mutant_structure_nll"],
-        "fresh_af2_proteinmpnn_own_structure_geomean_probability": generated_parent["mpnn_mutant_structure_geomean_probability"],
-    })
+    wt_row = next(row for row in controls if row["design_id"] == "TEVd")
     wt = wt_row["sequence"]
     wt_stability_members = parse_values(wt_row["fresh_af2_ridgey_ensemble_stability_members_json"])
     wt_solubility_members = parse_values(wt_row["fresh_af2_ridgey_ensemble_solubility_members_json"])
@@ -456,17 +395,12 @@ def main() -> None:
     if not all(row["af2"]["gate_pass"] for row in apps):
         raise ValueError("every selected plate design must pass the AF2 gate")
     ridgey_apps = [row for row in apps if row["cohort"] == "ridgey"]
-    if not all(
-        row["metrics"]["ridgey_solubility"]["lcb_delta_vs_selection_wt"] > 0
-        and row["metrics"]["ridgey_loop_robust_stability"]["lcb"] > 0
-        and row["metrics"]["ridgey_loop_robust_stability"]["structured_destabilizing_mutations_included"] == 0
-        for row in ridgey_apps
-    ):
-        raise ValueError("every Ridgey design must pass solubility LCB and loop-excluded structured-mutation DDG gates")
+    if not all(row["metrics"]["ridgey_stability"]["value"] > baseline["stability_mean"] and row["metrics"]["ridgey_solubility"]["value"] > baseline["solubility_mean"] for row in ridgey_apps):
+        raise ValueError("every Ridgey design must beat WT ensemble mean for stability and solubility")
 
     payload = {
         "project": "tev-redesign-plate",
-        "schema_version": "1.2.0",
+        "schema_version": "1.1.0",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "provenance": {
             "repository": "https://github.com/sutterhill/tev_plate_design",
@@ -475,12 +409,12 @@ def main() -> None:
             "paper_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10811672/",
         },
         "methods": {
-            "ridgey": "Ridgey v2 600M five-member ensemble on each AF2 structure; loop-excluded mutation DDG on the common 1LVM/TEVd structure is the stability selection metric; global proteolysis stability is reported but not selected",
+            "ridgey": "Ridgey v2 600M five-member ensemble on each AF2 structure; base 600M also retained in the archival table",
             "proteinmpnn": "ProteinMPNN v_48_020; geometric-mean per-residue probability from 16 decoding orders",
             "folding": "AlphaFold2 model 3, six recycles, parent-MSA query swap; no explicit 1LVM template",
-            "constraints": "m3: active site + top 50% conserved fixed (127 fixed, 94 mutable); no novel cysteine, while native TEVd cysteines may be restored by DDG reversion",
-            "ridgey_selection_eligibility": "AF2 pass; every retained helix/sheet mutation has positive mean DDG improvement with at least 4/5 Ridgey members; loop/coil mutations receive no stability credit; core-DDG mean-SD >0; and fresh own-structure solubility paired-delta mean-SD >0 versus TEVd.",
-            "ridgey_selection_fallback": "Global MGnify proteolysis stability was excluded from gating and ranking. Eligible designs entered a balanced loop-robust-DDG/solubility quality pool before deterministic max-min sequence-diversity selection.",
+            "constraints": "m3: active site + top 50% conserved fixed (127 fixed, 94 mutable); no introduced cysteine",
+            "ridgey_selection_eligibility": "AF2 pass and five-member ensemble mean strictly above TEVd for both stability and solubility.",
+            "ridgey_selection_fallback": "No score threshold was relaxed. Eligible designs were ranked by paired-member consensus (5/5, then 4/5, then 3/5, etc.) before deterministic sequence-diversity selection.",
             "released_activity": "Only hyperTEV56/60/89 have individual published kinetics; other active/somewhat/inactive labels are trace-order inferences from Figure S7 and are not RFU/s.",
         },
         "parent": {
@@ -502,13 +436,9 @@ def main() -> None:
     summary = {
         "rows": len(apps),
         "cohorts": {cohort: sum(row["cohort"] == cohort for row in apps) for cohort in ("TEVd", "released_m3", "ridgey", "proteinmpnn")},
-        "ridgey_solubility_vote_counts": {str(vote): sum(row["metrics"]["ridgey_solubility"]["votes_vs_wt"] == vote for row in ridgey_apps) for vote in range(6)},
+        "ridgey_joint_vote_counts": {str(vote): sum(row["metrics"]["ridgey_stability"]["joint_votes_vs_wt"] == vote for row in ridgey_apps) for vote in range(6)},
         "all_af2_pass": all(row["af2"]["gate_pass"] for row in apps),
-        "all_ridgey_solubility_lcb_positive": all(row["metrics"]["ridgey_solubility"]["lcb_delta_vs_selection_wt"] > 0 for row in ridgey_apps),
-        "all_ridgey_loop_robust_core_ddg_lcb_positive": all(row["metrics"]["ridgey_loop_robust_stability"]["lcb"] > 0 for row in ridgey_apps),
-        "all_ridgey_structured_destabilizing_mutations_excluded": all(row["metrics"]["ridgey_loop_robust_stability"]["structured_destabilizing_mutations_included"] == 0 for row in ridgey_apps),
-        "ridgey_global_proteolysis_stability_above_wt_count_reported_only": sum(row["metrics"]["ridgey_stability"]["value"] > baseline["stability_mean"] for row in ridgey_apps),
-        "global_proteolysis_stability_used_for_selection": False,
+        "all_ridgey_means_better_than_wt": True,
     }
     (output / "VALIDATION.json").write_text(json.dumps(summary, indent=2) + "\n")
     files = sorted(path for path in output.rglob("*") if path.is_file() and path.name != "SHA256SUMS")

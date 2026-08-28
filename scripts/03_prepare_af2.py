@@ -26,7 +26,7 @@ def swap_query(parent_a3m: str, sequence: str, name: str) -> str:
 
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--run-name", default="production")
+    parser.add_argument("--run-name", choices=["smoke", "production"], default="production")
     parser.add_argument("--per-method", type=int, default=144)
     parser.add_argument("--ridgey-table")
     parser.add_argument("--proteinmpnn-table")
@@ -94,3 +94,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
