@@ -1,0 +1,34 @@
+{
+  "sources": {
+    "/opt/dlami/nvme/tev_plate_design/deliverables/tev_plate_97.csv": "cd02dd08a49ff16aa1ceaff1b967763c5e6272b7d9970242e3a42a848fd6cc7d",
+    "/opt/dlami/nvme/tev_plate_design/deliverables/plate.json": "8328d4c6a89bb47682984a433fcae4300cf9516d75b85061eb4208237abd6fbc",
+    "/opt/dlami/nvme/tev_reanalysis/dataset/TEVd_1LVM_A_1-221.pdb": "324d1fc1f92fb17dbbb1b0801f5c0f8ce7d172e6529897ebc1cd06eda0ca8edf",
+    "/opt/dlami/nvme/tev_reanalysis/dataset/design_metadata.csv": "edff4ae74d7efa1e32ef05de3c44f5d19cdfa295a045001bfd176204095f9d26"
+  },
+  "ridgey_api": "https://shv-internal--ridgey-v2-prod-web.modal.run",
+  "prediction_models": {
+    "600m": {
+      "threshold": 1e-12,
+      "purpose": "exact TEV EC plus scalar heads"
+    },
+    "6b": {
+      "threshold": 0.5,
+      "purpose": "strong-model scalar confirmation"
+    }
+  },
+  "attribution_models": [
+    "600m",
+    "6b"
+  ],
+  "attribution_targets": [
+    "stability",
+    "solubility",
+    "ec:3.4.22.44"
+  ],
+  "attribution_scaffolds": [
+    "TEVd",
+    "hyperTEV56",
+    "hyperTEV60",
+    "hyperTEV89"
+  ]
+}

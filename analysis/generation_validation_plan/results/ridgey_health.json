@@ -1,0 +1,30 @@
+{
+  "status": "ok",
+  "model": "ridgey_v2_600m",
+  "default_model": "600m",
+  "supported_models": {
+    "600m": "ridgey_v2_600m",
+    "6b": "ridgey_v2_6b",
+    "600m_ensemble": "ridgey_v2_600m_ensemble5"
+  },
+  "max_proteins": 30,
+  "inverse_fold_batch_size": 256,
+  "max_inverse_fold_sequences": 4096,
+  "heads": [
+    "uniprot_annotations",
+    "stability",
+    "ddg",
+    "solubility",
+    "ptm",
+    "contact",
+    "domain",
+    "protease",
+    "mlm"
+  ],
+  "routes": [
+    "/predict",
+    "/attribute",
+    "/inverse-fold",
+    "/protease"
+  ]
+}

@@ -1,0 +1,1549 @@
+[
+  {
+    "position_1indexed": 45,
+    "wt": "K",
+    "active_consensus": "A",
+    "floor_consensus": "L",
+    "jensen_shannon_distance": 0.44432415882388215
+  },
+  {
+    "position_1indexed": 188,
+    "wt": "E",
+    "active_consensus": "R",
+    "floor_consensus": "K",
+    "jensen_shannon_distance": 0.4061532800036804
+  },
+  {
+    "position_1indexed": 16,
+    "wt": "S",
+    "active_consensus": "D",
+    "floor_consensus": "D",
+    "jensen_shannon_distance": 0.3291254629553763
+  },
+  {
+    "position_1indexed": 193,
+    "wt": "Q",
+    "active_consensus": "P",
+    "floor_consensus": "P",
+    "jensen_shannon_distance": 0.29526896843419
+  },
+  {
+    "position_1indexed": 20,
+    "wt": "H",
+    "active_consensus": "K",
+    "floor_consensus": "K",
+    "jensen_shannon_distance": 0.2843350607385229
+  },
+  {
+    "position_1indexed": 118,
+    "wt": "T",
+    "active_consensus": "T",
+    "floor_consensus": "T",
+    "jensen_shannon_distance": 0.2748759287138742
+  },
+  {
+    "position_1indexed": 67,
+    "wt": "K",
+    "active_consensus": "S",
+    "floor_consensus": "S",
+    "jensen_shannon_distance": 0.2717855482559935
+  },
+  {
+    "position_1indexed": 128,
+    "wt": "T",
+    "active_consensus": "V",
+    "floor_consensus": "V",
+    "jensen_shannon_distance": 0.271609916711341
+  },
+  {
+    "position_1indexed": 28,
+    "wt": "H",
+    "active_consensus": "Y",
+    "floor_consensus": "R",
+    "jensen_shannon_distance": 0.26944770625477965
+  },
+  {
+    "position_1indexed": 192,
+    "wt": "N",
+    "active_consensus": "D",
+    "floor_consensus": "D",
+    "jensen_shannon_distance": 0.2624993163161308
+  },
+  {
+    "position_1indexed": 210,
+    "wt": "L",
+    "active_consensus": "E",
+    "floor_consensus": "D",
+    "jensen_shannon_distance": 0.2593831622255144
+  },
+  {
+    "position_1indexed": 197,
+    "wt": "Q",
+    "active_consensus": "K",
+    "floor_consensus": "K",
+    "jensen_shannon_distance": 0.2583409056062534
+  },
+  {
+    "position_1indexed": 99,
+    "wt": "K",
+    "active_consensus": "V",
+    "floor_consensus": "V",
+    "jensen_shannon_distance": 0.2545988521585494
+  },
+  {
+    "position_1indexed": 159,
+    "wt": "R",
+    "active_consensus": "S",
+    "floor_consensus": "S",
+    "jensen_shannon_distance": 0.2325860525703665
+  },
+  {
+    "position_1indexed": 86,
+    "wt": "R",
+    "active_consensus": "E",
+    "floor_consensus": "E",
+    "jensen_shannon_distance": 0.2302339565440944
+  },
+  {
+    "position_1indexed": 120,
+    "wt": "S",
+    "active_consensus": "T",
+    "floor_consensus": "T",
+    "jensen_shannon_distance": 0.2250278315357855
+  },
+  {
+    "position_1indexed": 1,
+    "wt": "G",
+    "active_consensus": "A",
+    "floor_consensus": "A",
+    "jensen_shannon_distance": 0.2243135128566243
+  },
+  {
+    "position_1indexed": 60,
+    "wt": "L",
+    "active_consensus": "K",
+    "floor_consensus": "I",
+    "jensen_shannon_distance": 0.22419209559287062
+  },
+  {
+    "position_1indexed": 33,
+    "wt": "Y",
+    "active_consensus": "Y",
+    "floor_consensus": "Y",
+    "jensen_shannon_distance": 0.22094749024249472
+  },
+  {
+    "position_1indexed": 199,
+    "wt": "V",
+    "active_consensus": "I",
+    "floor_consensus": "I",
+    "jensen_shannon_distance": 0.2209474902424947
+  },
+  {
+    "position_1indexed": 194,
+    "wt": "E",
+    "active_consensus": "S",
+    "floor_consensus": "S",
+    "jensen_shannon_distance": 0.20940008526407555
+  },
+  {
+    "position_1indexed": 121,
+    "wt": "M",
+    "active_consensus": "P",
+    "floor_consensus": "P",
+    "jensen_shannon_distance": 0.2054952705370322
+  },
+  {
+    "position_1indexed": 84,
+    "wt": "I",
+    "active_consensus": "I",
+    "floor_consensus": "I",
+    "jensen_shannon_distance": 0.2012569473404442
+  },
+  {
+    "position_1indexed": 124,
+    "wt": "M",
+    "active_consensus": "E",
+    "floor_consensus": "E",
+    "jensen_shannon_distance": 0.20125694734044416
+  },
+  {
+    "position_1indexed": 181,
+    "wt": "S",
+    "active_consensus": "A",
+    "floor_consensus": "A",
+    "jensen_shannon_distance": 0.20125694734044416
+  },
+  {
+    "position_1indexed": 145,
+    "wt": "Q",
+    "active_consensus": "P",
+    "floor_consensus": "P",
+    "jensen_shannon_distance": 0.20125694734044414
+  },
+  {
+    "position_1indexed": 24,
+    "wt": "E",
+    "active_consensus": "T",
+    "floor_consensus": "T",
+    "jensen_shannon_distance": 0.19812942771546044
+  },
+  {
+    "position_1indexed": 104,
+    "wt": "Q",
+    "active_consensus": "V",
+    "floor_consensus": "V",
+    "jensen_shannon_distance": 0.1974085848709548
+  },
+  {
+    "position_1indexed": 71,
+    "wt": "T",
+    "active_consensus": "T",
+    "floor_consensus": "T",
+    "jensen_shannon_distance": 0.19220456478918244
+  },
+  {
+    "position_1indexed": 58,
+    "wt": "Q",
+    "active_consensus": "T",
+    "floor_consensus": "T",
+    "jensen_shannon_distance": 0.19150921198805695
+  },
+  {
+    "position_1indexed": 65,
+    "wt": "K",
+    "active_consensus": "T",
+    "floor_consensus": "T",
+    "jensen_shannon_distance": 0.18984991358725514
+  },
+  {
+    "position_1indexed": 97,
+    "wt": "K",
+    "active_consensus": "T",
+    "floor_consensus": "T",
+    "jensen_shannon_distance": 0.17987104565785897
+  },
+  {
+    "position_1indexed": 73,
+    "wt": "Q",
+    "active_consensus": "K",
+    "floor_consensus": "K",
+    "jensen_shannon_distance": 0.1745972800580911
+  },
+  {
+    "position_1indexed": 5,
+    "wt": "F",
+    "active_consensus": "A",
+    "floor_consensus": "A",
+    "jensen_shannon_distance": 0.17330860463453662
+  },
+  {
+    "position_1indexed": 4,
+    "wt": "L",
+    "active_consensus": "A",
+    "floor_consensus": "A",
+    "jensen_shannon_distance": 0.16805007461111865
+  },
+  {
+    "position_1indexed": 110,
+    "wt": "C",
+    "active_consensus": "V",
+    "floor_consensus": "V",
+    "jensen_shannon_distance": 0.1663679591609217
+  },
+  {
+    "position_1indexed": 78,
+    "wt": "D",
+    "active_consensus": "E",
+    "floor_consensus": "E",
+    "jensen_shannon_distance": 0.16535181444451014
+  },
+  {
+    "position_1indexed": 105,
+    "wt": "R",
+    "active_consensus": "V",
+    "floor_consensus": "V",
+    "jensen_shannon_distance": 0.16262082112024231
+  },
+  {
+    "position_1indexed": 130,
+    "wt": "C",
+    "active_consensus": "T",
+    "floor_consensus": "T",
+    "jensen_shannon_distance": 0.16219016468216005
+  },
+  {
+    "position_1indexed": 206,
+    "wt": "A",
+    "active_consensus": "S",
+    "floor_consensus": "S",
+    "jensen_shannon_distance": 0.16022453070387319
+  },
+  {
+    "position_1indexed": 57,
+    "wt": "V",
+    "active_consensus": "I",
+    "floor_consensus": "I",
+    "jensen_shannon_distance": 0.1523377476033511
+  },
+  {
+    "position_1indexed": 132,
+    "wt": "F",
+    "active_consensus": "F",
+    "floor_consensus": "F",
+    "jensen_shannon_distance": 0.1514370174017186
+  },
+  {
+    "position_1indexed": 108,
+    "wt": "R",
+    "active_consensus": "K",
+    "floor_consensus": "R",
+    "jensen_shannon_distance": 0.14900890576394485
+  },
+  {
+    "position_1indexed": 23,
+    "wt": "N",
+    "active_consensus": "N",
+    "floor_consensus": "N",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 25,
+    "wt": "S",
+    "active_consensus": "S",
+    "floor_consensus": "S",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 90,
+    "wt": "D",
+    "active_consensus": "D",
+    "floor_consensus": "D",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 91,
+    "wt": "F",
+    "active_consensus": "F",
+    "floor_consensus": "F",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 88,
+    "wt": "P",
+    "active_consensus": "P",
+    "floor_consensus": "P",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 80,
+    "wt": "R",
+    "active_consensus": "R",
+    "floor_consensus": "R",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 81,
+    "wt": "D",
+    "active_consensus": "D",
+    "floor_consensus": "D",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 51,
+    "wt": "N",
+    "active_consensus": "N",
+    "floor_consensus": "N",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 48,
+    "wt": "F",
+    "active_consensus": "F",
+    "floor_consensus": "F",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 50,
+    "wt": "R",
+    "active_consensus": "R",
+    "floor_consensus": "R",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 61,
+    "wt": "H",
+    "active_consensus": "H",
+    "floor_consensus": "H",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 38,
+    "wt": "G",
+    "active_consensus": "G",
+    "floor_consensus": "G",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 41,
+    "wt": "I",
+    "active_consensus": "I",
+    "floor_consensus": "I",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 40,
+    "wt": "F",
+    "active_consensus": "L",
+    "floor_consensus": "L",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 44,
+    "wt": "N",
+    "active_consensus": "N",
+    "floor_consensus": "N",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 35,
+    "wt": "I",
+    "active_consensus": "I",
+    "floor_consensus": "I",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 36,
+    "wt": "G",
+    "active_consensus": "G",
+    "floor_consensus": "G",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 32,
+    "wt": "L",
+    "active_consensus": "L",
+    "floor_consensus": "L",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 92,
+    "wt": "P",
+    "active_consensus": "P",
+    "floor_consensus": "P",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 93,
+    "wt": "P",
+    "active_consensus": "P",
+    "floor_consensus": "P",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 89,
+    "wt": "K",
+    "active_consensus": "K",
+    "floor_consensus": "K",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 79,
+    "wt": "G",
+    "active_consensus": "G",
+    "floor_consensus": "G",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 87,
+    "wt": "M",
+    "active_consensus": "M",
+    "floor_consensus": "M",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 85,
+    "wt": "I",
+    "active_consensus": "I",
+    "floor_consensus": "I",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 55,
+    "wt": "L",
+    "active_consensus": "L",
+    "floor_consensus": "L",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 68,
+    "wt": "N",
+    "active_consensus": "N",
+    "floor_consensus": "N",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 14,
+    "wt": "I",
+    "active_consensus": "I",
+    "floor_consensus": "I",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 15,
+    "wt": "S",
+    "active_consensus": "S",
+    "floor_consensus": "S",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 18,
+    "wt": "I",
+    "active_consensus": "I",
+    "floor_consensus": "I",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 21,
+    "wt": "L",
+    "active_consensus": "L",
+    "floor_consensus": "L",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 37,
+    "wt": "F",
+    "active_consensus": "F",
+    "floor_consensus": "F",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 34,
+    "wt": "G",
+    "active_consensus": "G",
+    "floor_consensus": "G",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 31,
+    "wt": "S",
+    "active_consensus": "S",
+    "floor_consensus": "S",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 30,
+    "wt": "T",
+    "active_consensus": "I",
+    "floor_consensus": "I",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 59,
+    "wt": "S",
+    "active_consensus": "S",
+    "floor_consensus": "S",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 53,
+    "wt": "G",
+    "active_consensus": "G",
+    "floor_consensus": "G",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 42,
+    "wt": "I",
+    "active_consensus": "I",
+    "floor_consensus": "I",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 46,
+    "wt": "H",
+    "active_consensus": "H",
+    "floor_consensus": "H",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 52,
+    "wt": "N",
+    "active_consensus": "N",
+    "floor_consensus": "N",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 47,
+    "wt": "L",
+    "active_consensus": "L",
+    "floor_consensus": "L",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 12,
+    "wt": "N",
+    "active_consensus": "N",
+    "floor_consensus": "N",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 13,
+    "wt": "P",
+    "active_consensus": "P",
+    "floor_consensus": "P",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 27,
+    "wt": "G",
+    "active_consensus": "G",
+    "floor_consensus": "G",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 26,
+    "wt": "D",
+    "active_consensus": "D",
+    "floor_consensus": "D",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 9,
+    "wt": "R",
+    "active_consensus": "R",
+    "floor_consensus": "R",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 10,
+    "wt": "D",
+    "active_consensus": "D",
+    "floor_consensus": "D",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 7,
+    "wt": "G",
+    "active_consensus": "G",
+    "floor_consensus": "G",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 8,
+    "wt": "P",
+    "active_consensus": "P",
+    "floor_consensus": "P",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 3,
+    "wt": "S",
+    "active_consensus": "S",
+    "floor_consensus": "S",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 2,
+    "wt": "E",
+    "active_consensus": "E",
+    "floor_consensus": "E",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 220,
+    "wt": "K",
+    "active_consensus": "K",
+    "floor_consensus": "K",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 219,
+    "wt": "D",
+    "active_consensus": "D",
+    "floor_consensus": "D",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 221,
+    "wt": "P",
+    "active_consensus": "P",
+    "floor_consensus": "P",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 218,
+    "wt": "M",
+    "active_consensus": "M",
+    "floor_consensus": "M",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 215,
+    "wt": "K",
+    "active_consensus": "K",
+    "floor_consensus": "K",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 217,
+    "wt": "F",
+    "active_consensus": "F",
+    "floor_consensus": "F",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 214,
+    "wt": "H",
+    "active_consensus": "H",
+    "floor_consensus": "H",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 190,
+    "wt": "L",
+    "active_consensus": "L",
+    "floor_consensus": "L",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 208,
+    "wt": "S",
+    "active_consensus": "S",
+    "floor_consensus": "S",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 205,
+    "wt": "N",
+    "active_consensus": "N",
+    "floor_consensus": "N",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 201,
+    "wt": "G",
+    "active_consensus": "G",
+    "floor_consensus": "G",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 160,
+    "wt": "D",
+    "active_consensus": "D",
+    "floor_consensus": "D",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 165,
+    "wt": "G",
+    "active_consensus": "G",
+    "floor_consensus": "G",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 163,
+    "wt": "I",
+    "active_consensus": "I",
+    "floor_consensus": "I",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 161,
+    "wt": "G",
+    "active_consensus": "G",
+    "floor_consensus": "G",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 162,
+    "wt": "F",
+    "active_consensus": "S",
+    "floor_consensus": "S",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 62,
+    "wt": "G",
+    "active_consensus": "G",
+    "floor_consensus": "G",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 64,
+    "wt": "F",
+    "active_consensus": "F",
+    "floor_consensus": "F",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 66,
+    "wt": "V",
+    "active_consensus": "I",
+    "floor_consensus": "I",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 77,
+    "wt": "I",
+    "active_consensus": "I",
+    "floor_consensus": "I",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 74,
+    "wt": "Q",
+    "active_consensus": "L",
+    "floor_consensus": "L",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 72,
+    "wt": "L",
+    "active_consensus": "L",
+    "floor_consensus": "L",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 75,
+    "wt": "H",
+    "active_consensus": "H",
+    "floor_consensus": "H",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 76,
+    "wt": "L",
+    "active_consensus": "L",
+    "floor_consensus": "L",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 119,
+    "wt": "K",
+    "active_consensus": "K",
+    "floor_consensus": "K",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 109,
+    "wt": "I",
+    "active_consensus": "I",
+    "floor_consensus": "I",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 106,
+    "wt": "E",
+    "active_consensus": "G",
+    "floor_consensus": "G",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 107,
+    "wt": "E",
+    "active_consensus": "E",
+    "floor_consensus": "E",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 103,
+    "wt": "P",
+    "active_consensus": "P",
+    "floor_consensus": "P",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 111,
+    "wt": "L",
+    "active_consensus": "L",
+    "floor_consensus": "L",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 98,
+    "wt": "L",
+    "active_consensus": "L",
+    "floor_consensus": "L",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 101,
+    "wt": "R",
+    "active_consensus": "R",
+    "floor_consensus": "R",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 154,
+    "wt": "P",
+    "active_consensus": "P",
+    "floor_consensus": "P",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 155,
+    "wt": "L",
+    "active_consensus": "M",
+    "floor_consensus": "M",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 152,
+    "wt": "G",
+    "active_consensus": "G",
+    "floor_consensus": "G",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 147,
+    "wt": "K",
+    "active_consensus": "K",
+    "floor_consensus": "K",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 149,
+    "wt": "G",
+    "active_consensus": "G",
+    "floor_consensus": "G",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 127,
+    "wt": "D",
+    "active_consensus": "D",
+    "floor_consensus": "D",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 133,
+    "wt": "P",
+    "active_consensus": "P",
+    "floor_consensus": "P",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 126,
+    "wt": "S",
+    "active_consensus": "S",
+    "floor_consensus": "S",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 139,
+    "wt": "F",
+    "active_consensus": "F",
+    "floor_consensus": "F",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 135,
+    "wt": "S",
+    "active_consensus": "S",
+    "floor_consensus": "S",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 136,
+    "wt": "D",
+    "active_consensus": "D",
+    "floor_consensus": "D",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 137,
+    "wt": "G",
+    "active_consensus": "G",
+    "floor_consensus": "G",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 141,
+    "wt": "K",
+    "active_consensus": "K",
+    "floor_consensus": "K",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 144,
+    "wt": "I",
+    "active_consensus": "I",
+    "floor_consensus": "I",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 142,
+    "wt": "H",
+    "active_consensus": "H",
+    "floor_consensus": "H",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 134,
+    "wt": "S",
+    "active_consensus": "S",
+    "floor_consensus": "S",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 157,
+    "wt": "S",
+    "active_consensus": "S",
+    "floor_consensus": "S",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 153,
+    "wt": "S",
+    "active_consensus": "S",
+    "floor_consensus": "S",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 151,
+    "wt": "C",
+    "active_consensus": "C",
+    "floor_consensus": "C",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 150,
+    "wt": "Q",
+    "active_consensus": "Q",
+    "floor_consensus": "Q",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 148,
+    "wt": "D",
+    "active_consensus": "D",
+    "floor_consensus": "D",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 170,
+    "wt": "S",
+    "active_consensus": "S",
+    "floor_consensus": "S",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 115,
+    "wt": "N",
+    "active_consensus": "N",
+    "floor_consensus": "N",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 114,
+    "wt": "T",
+    "active_consensus": "R",
+    "floor_consensus": "R",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 117,
+    "wt": "Q",
+    "active_consensus": "Q",
+    "floor_consensus": "Q",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 123,
+    "wt": "S",
+    "active_consensus": "S",
+    "floor_consensus": "S",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 116,
+    "wt": "F",
+    "active_consensus": "F",
+    "floor_consensus": "F",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 129,
+    "wt": "S",
+    "active_consensus": "S",
+    "floor_consensus": "S",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 102,
+    "wt": "E",
+    "active_consensus": "E",
+    "floor_consensus": "E",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 100,
+    "wt": "F",
+    "active_consensus": "F",
+    "floor_consensus": "F",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 95,
+    "wt": "P",
+    "active_consensus": "P",
+    "floor_consensus": "P",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 94,
+    "wt": "F",
+    "active_consensus": "F",
+    "floor_consensus": "F",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 200,
+    "wt": "S",
+    "active_consensus": "S",
+    "floor_consensus": "S",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 212,
+    "wt": "G",
+    "active_consensus": "G",
+    "floor_consensus": "G",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 213,
+    "wt": "G",
+    "active_consensus": "G",
+    "floor_consensus": "G",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 174,
+    "wt": "N",
+    "active_consensus": "N",
+    "floor_consensus": "N",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 179,
+    "wt": "F",
+    "active_consensus": "F",
+    "floor_consensus": "F",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 186,
+    "wt": "F",
+    "active_consensus": "F",
+    "floor_consensus": "F",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 176,
+    "wt": "N",
+    "active_consensus": "N",
+    "floor_consensus": "N",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 204,
+    "wt": "L",
+    "active_consensus": "L",
+    "floor_consensus": "L",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 196,
+    "wt": "Q",
+    "active_consensus": "Q",
+    "floor_consensus": "Q",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 171,
+    "wt": "N",
+    "active_consensus": "N",
+    "floor_consensus": "N",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 168,
+    "wt": "S",
+    "active_consensus": "S",
+    "floor_consensus": "S",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 169,
+    "wt": "A",
+    "active_consensus": "A",
+    "floor_consensus": "A",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 172,
+    "wt": "F",
+    "active_consensus": "F",
+    "floor_consensus": "F",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 177,
+    "wt": "N",
+    "active_consensus": "N",
+    "floor_consensus": "N",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 167,
+    "wt": "H",
+    "active_consensus": "H",
+    "floor_consensus": "H",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 166,
+    "wt": "I",
+    "active_consensus": "I",
+    "floor_consensus": "I",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 189,
+    "wt": "L",
+    "active_consensus": "L",
+    "floor_consensus": "L",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 184,
+    "wt": "K",
+    "active_consensus": "P",
+    "floor_consensus": "P",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 183,
+    "wt": "P",
+    "active_consensus": "P",
+    "floor_consensus": "P",
+    "jensen_shannon_distance": 0.1471426128197322
+  },
+  {
+    "position_1indexed": 140,
+    "wt": "W",
+    "active_consensus": "W",
+    "floor_consensus": "W",
+    "jensen_shannon_distance": 0.14714261281973207
+  },
+  {
+    "position_1indexed": 211,
+    "wt": "W",
+    "active_consensus": "W",
+    "floor_consensus": "W",
+    "jensen_shannon_distance": 0.14714261281973207
+  },
+  {
+    "position_1indexed": 202,
+    "wt": "W",
+    "active_consensus": "W",
+    "floor_consensus": "W",
+    "jensen_shannon_distance": 0.14714261281973207
+  },
+  {
+    "position_1indexed": 178,
+    "wt": "Y",
+    "active_consensus": "Y",
+    "floor_consensus": "Y",
+    "jensen_shannon_distance": 0.14714261281973207
+  },
+  {
+    "position_1indexed": 198,
+    "wt": "W",
+    "active_consensus": "W",
+    "floor_consensus": "W",
+    "jensen_shannon_distance": 0.14714261281973207
+  },
+  {
+    "position_1indexed": 143,
+    "wt": "W",
+    "active_consensus": "W",
+    "floor_consensus": "W",
+    "jensen_shannon_distance": 0.14714261281973207
+  },
+  {
+    "position_1indexed": 11,
+    "wt": "Y",
+    "active_consensus": "Y",
+    "floor_consensus": "Y",
+    "jensen_shannon_distance": 0.14714261281973207
+  },
+  {
+    "position_1indexed": 69,
+    "wt": "T",
+    "active_consensus": "T",
+    "floor_consensus": "T",
+    "jensen_shannon_distance": 0.14714261281973204
+  },
+  {
+    "position_1indexed": 43,
+    "wt": "T",
+    "active_consensus": "T",
+    "floor_consensus": "T",
+    "jensen_shannon_distance": 0.14714261281973204
+  },
+  {
+    "position_1indexed": 22,
+    "wt": "T",
+    "active_consensus": "T",
+    "floor_consensus": "T",
+    "jensen_shannon_distance": 0.14714261281973204
+  },
+  {
+    "position_1indexed": 17,
+    "wt": "T",
+    "active_consensus": "T",
+    "floor_consensus": "T",
+    "jensen_shannon_distance": 0.14714261281973204
+  },
+  {
+    "position_1indexed": 70,
+    "wt": "T",
+    "active_consensus": "T",
+    "floor_consensus": "T",
+    "jensen_shannon_distance": 0.14714261281973204
+  },
+  {
+    "position_1indexed": 19,
+    "wt": "C",
+    "active_consensus": "V",
+    "floor_consensus": "V",
+    "jensen_shannon_distance": 0.14714261281973204
+  },
+  {
+    "position_1indexed": 216,
+    "wt": "V",
+    "active_consensus": "V",
+    "floor_consensus": "V",
+    "jensen_shannon_distance": 0.14714261281973204
+  },
+  {
+    "position_1indexed": 156,
+    "wt": "V",
+    "active_consensus": "V",
+    "floor_consensus": "V",
+    "jensen_shannon_distance": 0.14714261281973204
+  },
+  {
+    "position_1indexed": 191,
+    "wt": "T",
+    "active_consensus": "T",
+    "floor_consensus": "T",
+    "jensen_shannon_distance": 0.14714261281973204
+  },
+  {
+    "position_1indexed": 182,
+    "wt": "V",
+    "active_consensus": "V",
+    "floor_consensus": "V",
+    "jensen_shannon_distance": 0.14714261281973204
+  },
+  {
+    "position_1indexed": 175,
+    "wt": "T",
+    "active_consensus": "T",
+    "floor_consensus": "T",
+    "jensen_shannon_distance": 0.14714261281973204
+  },
+  {
+    "position_1indexed": 56,
+    "wt": "L",
+    "active_consensus": "T",
+    "floor_consensus": "T",
+    "jensen_shannon_distance": 0.14714261281973204
+  },
+  {
+    "position_1indexed": 63,
+    "wt": "V",
+    "active_consensus": "T",
+    "floor_consensus": "T",
+    "jensen_shannon_distance": 0.14714261281973204
+  },
+  {
+    "position_1indexed": 83,
+    "wt": "I",
+    "active_consensus": "V",
+    "floor_consensus": "V",
+    "jensen_shannon_distance": 0.14714261281973204
+  },
+  {
+    "position_1indexed": 54,
+    "wt": "T",
+    "active_consensus": "T",
+    "floor_consensus": "T",
+    "jensen_shannon_distance": 0.14714261281973204
+  },
+  {
+    "position_1indexed": 96,
+    "wt": "Q",
+    "active_consensus": "T",
+    "floor_consensus": "T",
+    "jensen_shannon_distance": 0.14714261281973204
+  },
+  {
+    "position_1indexed": 131,
+    "wt": "T",
+    "active_consensus": "T",
+    "floor_consensus": "T",
+    "jensen_shannon_distance": 0.14714261281973204
+  },
+  {
+    "position_1indexed": 146,
+    "wt": "T",
+    "active_consensus": "T",
+    "floor_consensus": "T",
+    "jensen_shannon_distance": 0.14714261281973204
+  },
+  {
+    "position_1indexed": 112,
+    "wt": "V",
+    "active_consensus": "V",
+    "floor_consensus": "V",
+    "jensen_shannon_distance": 0.14714261281973204
+  },
+  {
+    "position_1indexed": 113,
+    "wt": "T",
+    "active_consensus": "T",
+    "floor_consensus": "T",
+    "jensen_shannon_distance": 0.14714261281973204
+  },
+  {
+    "position_1indexed": 125,
+    "wt": "V",
+    "active_consensus": "V",
+    "floor_consensus": "V",
+    "jensen_shannon_distance": 0.14714261281973204
+  },
+  {
+    "position_1indexed": 138,
+    "wt": "I",
+    "active_consensus": "V",
+    "floor_consensus": "V",
+    "jensen_shannon_distance": 0.14714261281973204
+  },
+  {
+    "position_1indexed": 209,
+    "wt": "V",
+    "active_consensus": "V",
+    "floor_consensus": "V",
+    "jensen_shannon_distance": 0.14714261281973204
+  },
+  {
+    "position_1indexed": 164,
+    "wt": "V",
+    "active_consensus": "V",
+    "floor_consensus": "V",
+    "jensen_shannon_distance": 0.14714261281973204
+  },
+  {
+    "position_1indexed": 173,
+    "wt": "T",
+    "active_consensus": "T",
+    "floor_consensus": "T",
+    "jensen_shannon_distance": 0.14714261281973204
+  },
+  {
+    "position_1indexed": 180,
+    "wt": "T",
+    "active_consensus": "T",
+    "floor_consensus": "T",
+    "jensen_shannon_distance": 0.14714261281973204
+  },
+  {
+    "position_1indexed": 29,
+    "wt": "T",
+    "active_consensus": "S",
+    "floor_consensus": "S",
+    "jensen_shannon_distance": 0.1446214328683743
+  },
+  {
+    "position_1indexed": 39,
+    "wt": "P",
+    "active_consensus": "P",
+    "floor_consensus": "P",
+    "jensen_shannon_distance": 0.1446214328683743
+  },
+  {
+    "position_1indexed": 6,
+    "wt": "K",
+    "active_consensus": "P",
+    "floor_consensus": "P",
+    "jensen_shannon_distance": 0.14462143286837428
+  },
+  {
+    "position_1indexed": 49,
+    "wt": "R",
+    "active_consensus": "R",
+    "floor_consensus": "R",
+    "jensen_shannon_distance": 0.14462143286837428
+  },
+  {
+    "position_1indexed": 82,
+    "wt": "M",
+    "active_consensus": "L",
+    "floor_consensus": "L",
+    "jensen_shannon_distance": 0.14462143286837428
+  },
+  {
+    "position_1indexed": 207,
+    "wt": "D",
+    "active_consensus": "D",
+    "floor_consensus": "D",
+    "jensen_shannon_distance": 0.14462143286837428
+  },
+  {
+    "position_1indexed": 203,
+    "wt": "R",
+    "active_consensus": "S",
+    "floor_consensus": "S",
+    "jensen_shannon_distance": 0.14381405092925084
+  },
+  {
+    "position_1indexed": 195,
+    "wt": "A",
+    "active_consensus": "L",
+    "floor_consensus": "L",
+    "jensen_shannon_distance": 0.14272355626497754
+  },
+  {
+    "position_1indexed": 187,
+    "wt": "M",
+    "active_consensus": "M",
+    "floor_consensus": "M",
+    "jensen_shannon_distance": 0.14272355626497732
+  },
+  {
+    "position_1indexed": 122,
+    "wt": "S",
+    "active_consensus": "T",
+    "floor_consensus": "T",
+    "jensen_shannon_distance": 0.14206161257443897
+  },
+  {
+    "position_1indexed": 158,
+    "wt": "T",
+    "active_consensus": "V",
+    "floor_consensus": "V",
+    "jensen_shannon_distance": 0.14170726981065337
+  },
+  {
+    "position_1indexed": 185,
+    "wt": "N",
+    "active_consensus": "D",
+    "floor_consensus": "D",
+    "jensen_shannon_distance": 0.14169223022596372
+  }
+]
